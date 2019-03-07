@@ -5,12 +5,13 @@
 //congruentdiag
 //4 side
 public class Square extends Rectangle{ //side length of 5
-	String title;
+	String title = "Square";
 	double sl;
 	double area;
 	Square(double sideLength){
 		super(sideLength, sideLength);
-		area = sideLength*sideLength;
+		area = Math.round((sideLength*sideLength)*100.0)/100.0;
+		sl = sideLength;
 	}
 	
 	public void setName(String name){
@@ -42,5 +43,8 @@ public class Square extends Rectangle{ //side length of 5
 	}
 	public boolean isComposite() {
 		return false;
+	}
+	public String toString(){
+		return getName() + ":  " + "Side:  " + getHeight() + "  Area:  " + getArea() + "  Perimeter:  " + getPerimeter();
 	}
 }

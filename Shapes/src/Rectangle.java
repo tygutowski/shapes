@@ -9,7 +9,7 @@ public class Rectangle extends Shape2D implements Polygon{//base of 2.5 height o
 		b = base;
 		h = height;
 	}
-	String title;
+	String title = "Rectangle";
 	public void setName(String name){
 		title = name;
 	}
@@ -38,9 +38,12 @@ public class Rectangle extends Shape2D implements Polygon{//base of 2.5 height o
 		return true;
 	}
 	public double getArea() {
-		return b*h;
+		return Math.round((b*h)*100.0)/100.0;
 	}
 	public boolean isComposite() {
 		return false;
+	}
+	public String toString(){
+		return getName() + ":  " + "Length:  " + getHeight() + "  Width:  " + getBase() + "  Area:  " + getArea() + "  Perimeter:  " + getPerimeter();
 	}
 }

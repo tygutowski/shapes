@@ -11,7 +11,7 @@ public class Rhombus extends Shape2D implements Polygon{ //
 		sl = sideLength;
 		aa = acuteAngle;
 	}
-	String title;
+	String title = "Rhombus";
 	public void setName(String name){
 		title = name;
 	}
@@ -40,9 +40,12 @@ public class Rhombus extends Shape2D implements Polygon{ //
 		return true;
 	}
 	public double getArea() {
-		return height*sl;
+		return Math.round((height*sl)*100.0)/100.0;
 	}
 	public boolean isComposite() {
 		return false;
+	}
+	public String toString(){
+		return getName() + ":  " + "Side:  " + getBase() + "  Height:  " + getHeight() + "  Area:  " + getArea() + "  Perimeter:  " + getPerimeter();
 	}
 }

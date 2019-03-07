@@ -4,11 +4,12 @@
 public class Ellipse extends Shape2D implements Nonpolygon{ //maj of 6 min of 3
 	double ma;
 	double mi;
+	String title = "Ellipse";
 	Ellipse(double majAxis, double minAxis){
 		ma = majAxis;
 		mi = minAxis;
 	}
-	String title;
+
 	public void setName(String name){
 		title = name;
 	}
@@ -16,18 +17,21 @@ public class Ellipse extends Shape2D implements Nonpolygon{ //maj of 6 min of 3
 		return title;
 	}
 	public double getLengMajAxis(){
-		return 1;
+		return ma;
 	}
 	public double getLengMinAxis(){
-		return 1;
+		return mi;
 	}
 	public double getCircumference(){
-		return 2*PI*Math.sqrt(  ((1/2*ma)*(1/2*ma))   +   ((1/2*mi)*(1/2*mi))  )/2;
+		return Math.round((2*PI*Math.sqrt(((ma*ma)+(mi*mi))/2)*100.0))/100;
 		}
 	public double getArea(){
-		return PI*ma*mi;
+		return Math.round((PI*ma*mi)*100.0)/100.0;
 	}
 	public boolean isComposite() {
 		return false;
+	}
+	public String toString(){
+		return getName() + ":  " + "Major Axis:  " + getLengMajAxis() + "  Minor Axis:  " + getLengMinAxis() + "  Area:  " + getArea() + "  Circumference:  " + getCircumference();
 	}
 }
