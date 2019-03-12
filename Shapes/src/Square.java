@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 //polygon
 //parallelogram
 //square is rectangle
@@ -8,9 +10,10 @@ public class Square extends Rectangle{ //side length of 5
 	String title = "Square";
 	double sl;
 	double area;
+	private DecimalFormat df = new DecimalFormat(".##");
 	Square(double sideLength){
 		super(sideLength, sideLength);
-		area = Math.round((sideLength*sideLength)*100.0)/100.0;
+		area = ((sideLength*sideLength)*100.0)/100.0;
 		sl = sideLength;
 	}
 	
@@ -45,6 +48,16 @@ public class Square extends Rectangle{ //side length of 5
 		return false;
 	}
 	public String toString(){
-		return getName() + ":  " + "Side:  " + getHeight() + "  Area:  " + getArea() + "  Perimeter:  " + getPerimeter();
+		String str = getName() + ":  " + "Side:  " + df.format(getHeight()) + "  Area:  " + df.format(getArea()) + "  Perimeter:  " + df.format(getPerimeter());
+		if(isParrallelogram()){
+			str += "   This is a parrallelogram";
+		}
+		if(isRegular()){
+			str += "   This shape is regular";
+		}
+		if(congruentDiag()){
+			str += "   Diagonals congruent";
+		}
+		return str;
 	}
 }

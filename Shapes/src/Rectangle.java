@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 //polygon
 //parallelogram
 //congruentdiag
@@ -5,6 +7,7 @@
 public class Rectangle extends Shape2D implements Polygon{//base of 2.5 height of 4
 	double b;
 	double h;
+	private DecimalFormat df = new DecimalFormat(".##");
 	Rectangle(double base, double height){
 		b = base;
 		h = height;
@@ -38,12 +41,19 @@ public class Rectangle extends Shape2D implements Polygon{//base of 2.5 height o
 		return true;
 	}
 	public double getArea() {
-		return Math.round((b*h)*100.0)/100.0;
+		return  ((b*h)*100.0)/100.0;
 	}
 	public boolean isComposite() {
 		return false;
 	}
 	public String toString(){
-		return getName() + ":  " + "Length:  " + getHeight() + "  Width:  " + getBase() + "  Area:  " + getArea() + "  Perimeter:  " + getPerimeter();
+		String str = getName() + ":  " + "Length:  " + df.format(getHeight()) + "  Width:  " + df.format(getBase()) + "  Area:  " + df.format(getArea()) + "  Perimeter:  " + df.format(getPerimeter());
+		if(isParrallelogram()){
+			str += "   This is a parrallelogram";
+		}
+		if(congruentDiag()){
+			str += "   Diagonals congruent";
+		}
+		return str;
 	}
 }

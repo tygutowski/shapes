@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 //polygon
 //parallelogram
 //4 side
@@ -6,7 +8,10 @@ public class Rhombus extends Shape2D implements Polygon{ //
 	double height;
 	double sl;
 	double aa;
+	private DecimalFormat df = new DecimalFormat(".##");
+	public static int amt = 0;
 	Rhombus(double sideLength, double acuteAngle){
+		amt++;
 		height = sideLength * Math.sin(acuteAngle*Nonpolygon.PI/180);
 		sl = sideLength;
 		aa = acuteAngle;
@@ -40,12 +45,16 @@ public class Rhombus extends Shape2D implements Polygon{ //
 		return true;
 	}
 	public double getArea() {
-		return Math.round((height*sl)*100.0)/100.0;
+		return  ((height*sl)*100.0)/100.0;
 	}
 	public boolean isComposite() {
 		return false;
 	}
 	public String toString(){
-		return getName() + ":  " + "Side:  " + getBase() + "  Height:  " + getHeight() + "  Area:  " + getArea() + "  Perimeter:  " + getPerimeter();
+		String str = getName() + ":  " + "Side:  " + df.format(getBase()) + "  Height:  " + df.format(getHeight()) + "  Area:  " + df.format(getArea()) + "  Perimeter:  " + df.format(getPerimeter());
+		if(isParrallelogram()){
+			str += "   This is a parrallelogram";
+		}
+		return str;
 	}
 }

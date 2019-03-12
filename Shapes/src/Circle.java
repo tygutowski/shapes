@@ -1,10 +1,15 @@
+import java.text.DecimalFormat;
+
 //circle is an ellipse
 //PI/4*majoraxis^2 = area
 public class Circle extends Ellipse { //rad 4
 	double r;
 	String title = "Circle";
+	public static int amt = 0;
+	private DecimalFormat df = new DecimalFormat(".##");
 	Circle(double radius){
 		super(radius*2, radius*2);
+		amt++;
 		r = radius;
 	}
 
@@ -15,15 +20,15 @@ public class Circle extends Ellipse { //rad 4
 		return title;
 	}
 	public double getArea(){
-		return Math.round((PI*(r*r))*100.0)/100.0;
+		return  ((PI*(r*r))*100.0)/100.0;
 	}
 	public boolean isComposite(){
 		return false;
 	}
 	public double getCircumference(){
-		return Math.round((2*PI*r)*100.0)/100.0;
+		return  ((2*PI*r)*100.0)/100.0;
 	}
 	public String toString(){
-		return getName() + ":  " + "Diameter:  " + r*2 + "  Radius:  "  + r + "  Area:  " + getArea() + "  Circumference:  " + getCircumference();
+		return getName() + ":  " + "Radius:  " + df.format(r) + "  Diameter:  "  + df.format(r*2) + "  Area:  " + df.format(getArea()) + "  Circumference:  " + df.format(getCircumference());
 	}
 }
